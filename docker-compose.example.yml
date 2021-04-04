@@ -1,0 +1,14 @@
+version: "3"
+services:
+    mailslurper: # for mail catcher
+        image: lakuapik/mailslurper-alpine:latest
+        ports:
+            - "${FORWARD_MAILSLURPER_PUBLIC_PORT:-8080}:8080"
+            - "${FORWARD_MAILSLURPER_SERVICE_PORT:-8085}:8085"
+            - "${FORWARD_MAILSLURPER_SMTP_PORT:-2500}:2500"
+        network_mode: bridge
+        healthcheck:
+            test: [
+                "CMD", "wget", "-nv", "-t1", "--spider",
+                "http://localhost:${FORWARD_MAILSLURPER_PUBLIC_PORT:-8080}"
+            ]
