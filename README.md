@@ -13,7 +13,7 @@ This is an alpine build for [MailSlurper](https://github.com/mailslurper/mailslu
 
 ### Configuration
 
-Example
+Example of `config.json` file
 
 ```json
 {
