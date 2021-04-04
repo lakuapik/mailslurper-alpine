@@ -67,8 +67,7 @@ services:
             - "${FORWARD_MAILSLURPER_PUBLIC_PORT:-8080}:8080"
             - "${FORWARD_MAILSLURPER_SERVICE_PORT:-8085}:8085"
             - "${FORWARD_MAILSLURPER_SMTP_PORT:-2500}:2500"
-        networks:
-            - bridge
+        network_mode: bridge
         healthcheck:
             test: [
                 "CMD", "wget", "-nv", "-t1", "--spider",
